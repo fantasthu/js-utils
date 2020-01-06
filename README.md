@@ -34,6 +34,7 @@ Object.prototype.toString.call(obj).slice(8, -1) === 'String'
 
 ```js
 ;/\d\d:\d\d:\d\d/.exec(new Date().toString())[0]
+ps: **:**:**
 ```
 
 [更多](https://www.cnblogs.com/xiaohuochai/p/5777757.html)
