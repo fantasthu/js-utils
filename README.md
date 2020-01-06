@@ -39,4 +39,35 @@ ps: **:**:**
 
 [更多](https://www.cnblogs.com/xiaohuochai/p/5777757.html)
 
-###
+### 数组的合并
+
+```js
+var arr1 = []
+var arr2 = []
+arr1.push(...arr2)
+```
+
+- 伪数组转数组
+
+```js
+const fakeArr = document.querySelectorAll('div')
+const Arr = [...fakeArr]
+```
+
+### 实现 bind 方法逻辑
+
+```js
+1.bind是绑定在方法上的
+Function.prototype.myBind = function(){}
+2.bind的返回值类型是function
+Function.prototype.myBind = function(){
+    return function(){}
+}
+3.bind 修改该方法的上下文对象,第二次运行此方法
+Function.prototype.myBind = function (obj){
+    return function(){
+        const args = arguments.slice(0,-1)
+        this.apply(obj,args)
+    }
+}
+```
