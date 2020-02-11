@@ -30,6 +30,33 @@ function overTimeClick(func, delay = 1000) {
 Object.prototype.toString.call(obj).slice(8, -1) === 'String'
 ```
 
+### 滚动到顶部函数
+
+```javascript
+top.addEventListener('click', function() {
+	aniToTop()
+})
+function aniToTop() {
+	// 距离顶部的位置
+	var offset = document.body.scrollTop || document.documentElement.scrollTop
+	// 初函数值
+	var a = 2,
+		x = 0,
+		y = 0
+	update()
+	function update() {
+		y = offset - a * Math.pow(x, 2)
+		scrollTo(0, y)
+		if (y <= 0) {
+			cancelAnimationFrame(update)
+			return
+		}
+		x++
+		requestAnimationFrame(update)
+	}
+}
+```
+
 ### 获取时分秒
 
 ```javascript
