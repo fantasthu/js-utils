@@ -272,3 +272,59 @@ function platform() {
 	return isAndroid ? 'android' : isiOS ? 'ios' : null
 }
 ```
+
+### 添加keyframes的 rules
+```javascript
+ function findKeyframesRule(rule) {
+        var ss = document.styleSheets;
+        console.log('ss', ss);
+
+        for (var i = 0; i < ss.length; ++i) {
+          for (var j = 0; j < ss[i].cssRules.length; ++j) {
+            if (ss[i].cssRules[j].type && ss[i].cssRules[j].name == rule) {
+              return ss[i].cssRules[j];
+            }
+          }
+        }
+        return null;
+}
+
+function insertMyRule(ruleName, str) {
+	let keyFrames = findKeyframesRule(ruleName);
+	console.log('keyframes', keyFrames);
+	keyFrames.appendRule(str);
+}
+insertMyRule(
+	'name',
+	`
+	0% { -webkit-transform: translate(100px, 100px)}
+	`
+);
+```
+
+### 封装js支持es5
+```javascript
+
+(function(global, factory) {
+  'use strict';
+
+  if (typeof module === 'object' && typeof module.exports === 'object') {
+    module.exports = global.document
+      ? factory(global, true)
+      : function(w) {
+          if (!w.document) {
+            throw new Error('fantast requires a window with a document');
+          }
+          return factory(w);
+        };
+  } else {
+    factory(global);
+  }
+})(typeof window !== 'undefined' ? window : this, function(window, noGlobal) {
+  'use strict';
+	// 此处填写内容返回值
+	// var a = {}
+	// return a;
+});
+
+```

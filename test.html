@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style lang="css">
+      .name{
+        background-color: red;
+      }
+      .attr{
+        width: 100px;height: 300px;background-color: red;
+        opacity: 0;
+        transition: transform 1s ease-in;
+        transform: translateY(-100px);
+      }
+      .ani{
+        transform: translateY(0);
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="name">name*i</div>
+    <div class="attr">my attr</div>
+    <div class="attr">my attr</div>
+    <div class="no">my attr</div>
+    <div class="no">my attr</div>
+    <div class="no">my attr</div>
+    <div class="no">my attr</div>
+    <div class="no">my attr</div>
+    <div class="no">my attr</div>
+    <div class="no">my attr</div>
+    <div class="no">my attr</div>
+    <div class="no">my attr</div>
+    <div class="no">my attr</div>
+    <div class="attr">my attr</div>
+    <script src="./fantast.js"></script>
+    <script>
+      var attrs = fan('.attr');
+      var clientH = document.documentElement.clientHeight;
+      var dom = null;
+      fan(function() {
+        var timer = null;
+        var countTime = 0;
+        var diffTime = 3000;
+        window.onscroll = function(e) {
+          var now = +new Date();
+          if (now - countTime > diffTime) {
+            func(attrs);
+            countTime = now;
+          }
+        };
+        function func(attrs) {
+          attrs.toArray().forEach((item, index) => {
+            console.log('item', item);
+            var disH =
+              fan(item).offset().top - document.documentElement.scrollTop;
+            if (disH < clientH) {
+              fan(item).addClass('ani');
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
